@@ -95,7 +95,7 @@ git mv README.md new_filename.md
             if (index === mineIndex) {
                 cell.classList.add("mine");
                 cell.innerHTML = "👮";
-                if (balance < 10) {
+                if (balance > 5) {
                     balance = Math.floor(balance / 2);
                 } else {
                     balance -= 5;
@@ -124,6 +124,7 @@ git mv README.md new_filename.md
                 document.getElementById("endMessage").innerText = "Lucky You! You Touched ALL The Children!";
                 document.getElementById("endScreen").classList.remove("hidden");
                 gameEnded = true;
+                showResetButton();
                 freezeBoard();
             }
         }
