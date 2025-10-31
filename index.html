@@ -6,7 +6,11 @@
     <title>Baumback Child Touching Simulator 3d</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
-        body { font-family: Arial, sans-serif; 
+        html, body { overflow: hidden; }
+        body { 
+            font-family: Arial, sans-serif; 
+            height: 100%;
+            margin: 0;
             text-align: center; 
             position: relative; 
             min-height: 100vh;
@@ -96,7 +100,7 @@
         let hitMine = false; // Track if the player has hit a mine
 
         function generateMine() {
-            mineIndex = Math.floor(Math.random() * (gridSize * gridSize));
+            mineIndex = 0;//Math.floor(Math.random() * (gridSize * gridSize));
         }
 
         function createGrid() {
