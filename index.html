@@ -82,7 +82,6 @@
     <div class="grid" id="grid"></div>
     <p id="status">Children Kidnapped: 0</p>
 
-    <!-- Reset Button now appears only after hitting a mine -->
     <div id="resetContainer">
         <button id="resetButton">Touch Kids Again?</button>
     </div>
@@ -132,8 +131,8 @@
                     balance = 0;
                 }
                 document.getElementById("status").innerText = `The cops caught you! Children Kidnapped: ${balance}`;
-                hitMine = true; // Player has hit a mine
-                showResetButton(); // Show the reset button
+                hitMine = true;
+                showResetButton()
                 freezeBoard();
                 checkEndGame();
             } else {
@@ -170,20 +169,20 @@
         }
 
         function showResetButton() {
-            if (hitMine) {
-                document.getElementById("resetContainer").style.display = "block"; // Show reset button only after hitting mine
+            if (hitMine && gameEnded == false) {
+                document.getElementById("resetContainer").style.display = "block";
             }
         }
 
         function resetGame() {
             revealedCells = 0;
             gameEnded = false;
-            hitMine = false; // Reset hitMine flag
+            hitMine = false;
             generateMine();
             createGrid();
             document.getElementById("status").innerText = `Children Kidnapped: ${balance}`;
             document.getElementById("endScreen").classList.add("hidden");
-            document.getElementById("resetContainer").style.display = "none"; // Hide reset button after resetting
+            document.getElementById("resetContainer").style.display = "none";
             document.querySelectorAll(".cell").forEach(cell => cell.style.pointerEvents = "auto");
         }
 
