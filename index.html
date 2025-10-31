@@ -60,7 +60,6 @@
         #resetContainer {
             display: none;
             margin-top: 20px;
-            z-index: 1001;
         }
 
         #resetButton { 
@@ -69,6 +68,19 @@
             border-radius: 5px; font-weight: bold; transition: 0.3s ease;
         }
         #resetButton:hover { background: #548FF7; }
+
+        #endResetContainer {
+            display: none;
+            margin-top: 20px;
+            z-index: 1001;
+        }
+
+        #endResetButton { 
+            padding: 12px 24px; font-size: 18px; 
+            cursor: pointer; background: #99BFFF; border: none; 
+            border-radius: 5px; font-weight: bold; transition: 0.3s ease;
+        }
+        #endResetButton:hover { background: #548FF7; }
 
         @keyframes fadeIn {
             0% { opacity: 0; transform: translateY(30px); }
@@ -83,6 +95,10 @@
     <p id="status">Children Kidnapped: 0</p>
 
     <div id="resetContainer">
+        <button id="resetButton">Touch Kids Again?</button>
+    </div>
+
+    <div id="endResetContainer">
         <button id="resetButton">Touch Kids Again?</button>
     </div>
 
@@ -127,12 +143,12 @@
                 cell.innerHTML = "👮";
                 if (balance > 5) {
                     balance = Math.floor(balance / 2);
+                    showResetButton()
                 } else {
                     balance = 0;
                 }
                 document.getElementById("status").innerText = `The cops caught you! Children Kidnapped: ${balance}`;
                 hitMine = true;
-                showResetButton()
                 freezeBoard();
                 checkEndGame();
             } else {
