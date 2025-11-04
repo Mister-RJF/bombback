@@ -69,12 +69,6 @@
         }
         #resetButton:hover { background: #548FF7; }
 
-        #endResetContainer {
-            display: none;
-            margin-top: 20px;
-            z-index: 1001;
-        }
-
         #endResetButton { 
             padding: 20px 40px;
             font-size: 24px;
@@ -124,7 +118,7 @@
         let hitMine = false;
 
         function generateMine() {
-            mineIndex = Math.floor(Math.random() * (gridSize * gridSize));
+            mineIndex = 0;l//Math.floor(Math.random() * (gridSize * gridSize));
         }
 
         function createGrid() {
@@ -213,16 +207,18 @@
                 balance = 0;
             }
             gameEnded = false;
-            hitMine = false;
+            
+            hitMine = false; 
+            
             generateMine();
             createGrid();
             document.getElementById("status").innerText = `Children Kidnapped: ${balance}`;
             document.getElementById("endScreen").classList.add("hidden");
-            
+
             document.getElementById("resetContainer").style.display = "none";
             
-            document.getElementById("endResetButton").classList.add("hidden"); 
-        
+            document.getElementById("endResetButton").classList.add("hidden"); 
+         
             document.querySelectorAll(".cell").forEach(cell => cell.style.pointerEvents = "auto");
         }
 
