@@ -202,7 +202,8 @@
 
         function showEndResetButton() {
             if (gameEnded) {
-                document.getElementById("endResetContainer").style.display = "block";
+                document.getElementById("endResetButton").classList.remove("hidden");
+                document.getElementById("resetContainer").style.display = "none";
             }
         }
 
@@ -217,8 +218,11 @@
             createGrid();
             document.getElementById("status").innerText = `Children Kidnapped: ${balance}`;
             document.getElementById("endScreen").classList.add("hidden");
+            
             document.getElementById("resetContainer").style.display = "none";
-            document.getElementById("endResetContainer").style.display = "none";
+            
+            document.getElementById("endResetButton").classList.add("hidden"); 
+        
             document.querySelectorAll(".cell").forEach(cell => cell.style.pointerEvents = "auto");
         }
 
