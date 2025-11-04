@@ -110,13 +110,18 @@
         <button id="resetButton">Touch Kids Again?</button>
     </div>
 
-    <div id="endResetContainer">
+    <!-- <div id="endResetContainer">
         <button id="resetButton">Touch Kids Again?</button>
-    </div>
+    </div> -->
 
     <div id="endScreen" class="end-screen hidden">
+        <button id="endResetButton" class="hidden">Touch Kids Again?</button>
         <h2 id="endMessage"></h2>
     </div>
+
+    <!-- <div id="endScreen" class="end-screen hidden">
+        <h2 id="endMessage"></h2>
+    </div> -->
 
     <script>
         const gridSize = 5;
@@ -225,11 +230,14 @@
             document.querySelectorAll(".cell").forEach(cell => cell.style.pointerEvents = "auto");
         }
 
-        document.getElementById("resetButton").addEventListener("click", resetGame);
-        document.getElementById("endResetButton").addEventListener("click", resetGame);
-
-        generateMine();
-        createGrid();
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Attach listeners to the existing buttons
+            document.getElementById("resetButton").addEventListener("click", resetGame);
+            document.getElementById("endResetButton").addEventListener("click", resetGame);
+        
+            generateMine();
+            createGrid();
+        });
     </script>
 </body>
 </html>
