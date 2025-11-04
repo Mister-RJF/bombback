@@ -112,7 +112,7 @@
         let mineIndex;
         let revealedCells = 0;
         let gameEnded = false;
-        let hitMine = false; // Track if the player has hit a mine
+        let hitMine = false;
 
         function generateMine() {
             mineIndex = 0;//Math.floor(Math.random() * (gridSize * gridSize));
@@ -136,7 +136,7 @@
             const cell = document.querySelector(`.cell[data-index='${index}']`);
             if (!cell || cell.classList.contains("revealed")) return;
 
-            cell.style.transform = "rotateY(180deg)"; // Flip animation
+            cell.style.transform = "rotateY(180deg)"; //Flip animation
 
             if (index === mineIndex) {
                 cell.classList.add("mine");
@@ -180,6 +180,7 @@
                 document.getElementById("endMessage").innerText = "The cops took back ALL the children";
                 document.getElementById("endScreen").classList.remove("hidden");
                 gameEnded = true;
+                showEndResetButton();
                 freezeBoard();
             }
         }
@@ -190,8 +191,17 @@
             }
         }
 
+        function showEndResetButton() {
+            if (gameEnded) {
+                document.getElementById("resetContainer").style.display = "block";
+            }
+        }
+
         function resetGame() {
             revealedCells = 0;
+            if (gameEnded) {
+                balance = 0;
+            }
             gameEnded = false;
             hitMine = false;
             generateMine();
