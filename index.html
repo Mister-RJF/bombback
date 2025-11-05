@@ -109,7 +109,7 @@
         <button id="endResetButton" class="hidden">Touch Kids Again?</button>
     </div>
 
-    <canvas id="confetti-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999;"></canvas>
+    <canvas id="confetti-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1002;"></canvas>
     
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
@@ -122,7 +122,7 @@
         let hitMine = false;
 
         function generateMine() {
-            mineIndex = Math.floor(Math.random() * (gridSize * gridSize));
+            mineIndex = 0;//Math.floor(Math.random() * (gridSize * gridSize));
         }
 
         function createGrid() {
