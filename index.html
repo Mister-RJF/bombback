@@ -146,14 +146,18 @@
                 cell.innerHTML = "👮";
                 if (balance > 5) {
                     balance = Math.floor(balance / 2);
-                    showResetButton();
                 } else {
                     balance = 0;
                 }
                 document.getElementById("status").innerText = `The cops caught you! Children Kidnapped: ${balance}`;
                 hitMine = true;
                 freezeBoard();
-                checkEndGame();
+                
+                checkEndGame(); 
+                
+                if (gameEnded === false) { 
+                    showResetButton();
+                }
             } else {
                 cell.classList.add("revealed");
                 cell.innerHTML = "👶";
