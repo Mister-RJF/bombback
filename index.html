@@ -109,6 +109,10 @@
         <button id="endResetButton" class="hidden">Touch Kids Again?</button>
     </div>
 
+    <canvas id="confetti-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999;"></canvas>
+    
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
     <script>
         const gridSize = 5;
         let balance = 0;
@@ -118,7 +122,7 @@
         let hitMine = false;
 
         function generateMine() {
-            mineIndex = Math.floor(Math.random() * (gridSize * gridSize));
+            mineIndex = 0;//Math.floor(Math.random() * (gridSize * gridSize));
         }
 
         function createGrid() {
@@ -179,6 +183,12 @@
                 gameEnded = true;
                 showEndResetButton();
                 freezeBoard();
+                
+                confetti({
+                    particleCount: 150,
+                    spread: 120,
+                    origin: { y: 0.6 }
+                });
             }
         }
 
@@ -224,10 +234,14 @@
             document.getElementById("endResetButton").classList.add("hidden"); 
          
             document.querySelectorAll(".cell").forEach(cell => cell.style.pointerEvents = "auto");
+            
+            if (typeof confetti === 'function') {
+                confetti.reset();
+            }
         }
 
         document.addEventListener('DOMContentLoaded', (event) => {
-            // Attach listeners to the existing buttons
+            
             document.getElementById("resetButton").addEventListener("click", resetGame);
             document.getElementById("endResetButton").addEventListener("click", resetGame);
         
