@@ -121,6 +121,12 @@
         let gameEnded = false;
         let hitMine = false;
 
+        const myCanvas = document.getElementById('confetti-canvas');
+        const myConfetti = confetti.create(myCanvas, {
+            resize: true,
+            useWorker: true
+        });
+
         function generateMine() {
             mineIndex = 0;//Math.floor(Math.random() * (gridSize * gridSize));
         }
@@ -184,7 +190,7 @@
                 showEndResetButton();
                 freezeBoard();
                 
-                confetti({
+                myConfetti({
                     particleCount: 150,
                     spread: 120,
                     origin: { y: 0.6 }
