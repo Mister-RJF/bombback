@@ -118,7 +118,7 @@
         let hitMine = false;
 
         function generateMine() {
-            mineIndex = 0;//Math.floor(Math.random() * (gridSize * gridSize));
+            mineIndex = Math.floor(Math.random() * (gridSize * gridSize));
         }
 
         function createGrid() {
